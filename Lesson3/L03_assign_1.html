@@ -1,0 +1,44 @@
+import java.io.*;
+import java.util.*;
+
+/**
+ * reads a java source file given to the constructor and writes two files
+ * one containing the comments and one containing everything else
+ */
+public class Assignment3{
+
+	public static void main(String[] args){
+		Assignment3 a = new Assignment3("L03_assign_1.html");
+	}// main
+	public Assignment3(String inputFile){
+		String comments = ""; 
+		String code = "";
+		//intially io readers/writers to null to make compiler happy
+		Scanner in = null;
+		PrintStream commentsOut = null;
+		PrintStream codeOut = null;
+		try{
+			in = new Scanner(new File(inputFile));
+			commentsOut = new PrintStream("comments.html");
+			codeOut = new PrintStream("code.html");
+
+			while(in.hasNextLine()){
+				String line = in.nextLine();
+				int beginComment = line.indexOf("//");
+				if(beginComment < 0){
+					beginComment = line.length();
+				}
+				comments += line.substring(beginComment) + "\n";
+				code += line.substring(0,beginComment) + "\n";
+			}
+			commentsOut.println(comments);
+			codeOut.println(code);
+		}catch(IOException e){
+			System.err.println("*****IO EXCEPTION CAUGHT*****");
+		}finally{
+			in.close();
+			commentsOut.close();
+			codeOut.close();
+		}//end try catch finally blocks
+	}// end constructor
+}// end class
