@@ -1,5 +1,13 @@
-import java.util.Scanner;
+//Write a short Java program that does some input, some output, and some calculations. 
+//Think of it as a Java refresher problem in case it has been awhile since you've done any Java programming.
+//
+//This program should set up a loop and keep requesting input until the user enters an asterisk (*). 
+//Each line you enter that has data should contain a floating-point number.
+//
+//Once the user ends the input with an asterisk, display three items: a count of the number of entries, 
+//the total of all the numbers, and the average of all the numbers.
 
+import java.util.Scanner;
 
 public class Assignment1{
 	int entryCount;
